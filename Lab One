@@ -26,7 +26,7 @@ public class Test {
 
    static double[][] arrayThree(int[] firstArr, float[] secondArr){ // Заполнение двумерного массива
       double[][] createDimeArr = new double[19][11]; 
-      String condition = "2 4 7 8 14 15 16 17 20";
+      int[] condition = new int[]{2, 4, 7, 8, 14, 15, 16, 17, 20};
 
       for (int i = 0; i<19; i++){
          for (int j = 0; j<11; j++){
@@ -39,7 +39,7 @@ public class Test {
                */
             }
 
-            else if (condition.contains(Integer.toString(firstArr[i]))){ 
+            else if (Arrays.asList(condition).contains(firstArr[i])){ 
                createDimeArr[i][j] = Math.pow(Math.atan(Math.pow(Math.E, -Math.abs(secondArr[j]))) / 2, Math.cbrt(Math.pow(2 / (secondArr[j]-0.5), 2)));
             }
 
@@ -55,14 +55,9 @@ public class Test {
 
       for (int i = 0; i < 19; i++){
          for (int j = 0; j < 11; j++){
-            if ( twoDimeArr[i][j] > 1000000 ){
-               System.out.print("TooMuch "); // заменяет числа больше 1000000 на TooMuch для простоты понимания
+            String str = String.format("%1$-7.02f", twoDimeArr[i][j] );
+            System.out.print(str + " ") ;
             
-            }
-            else {
-               String str = String.format("%1$-7.02f", twoDimeArr[i][j] );
-               System.out.print(str + " ") ;
-            }
          }
          System.out.println("");
       }
