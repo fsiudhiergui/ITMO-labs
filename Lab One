@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class Test {
 
-   public static int[] arrayOne(){
+   static int[] arrayOne(){
       int[] createArr = new int[19]; // Объявление первого массива типа int
       for (int i = 0; i < createArr.length; i++){      // Заполнение первого массива от 20 до 2
          createArr[i] = 20 - i;
@@ -15,7 +15,7 @@ public class Test {
       return createArr;
    }
 
-   public static float[] arrayTwo(){
+   static float[] arrayTwo(){
       float[] createArr = new float[11]; // Объявление второго массива типа int
       Random ran = new Random();
       for (int i = 0; i < createArr.length; i++) { // Заполнение второго массива псевдо случаными числами от -4.0 до 13.0
@@ -24,7 +24,7 @@ public class Test {
       return createArr;
    }
 
-   public static double[][] arrayThree(int[] firstArr, float[] secondArr){ // Заполнение двумерного массива
+   static double[][] arrayThree(int[] firstArr, float[] secondArr){ // Заполнение двумерного массива
       double[][] createDimeArr = new double[19][11]; 
       String condition = "2 4 7 8 14 15 16 17 20";
 
@@ -51,7 +51,7 @@ public class Test {
       return createDimeArr;
    }
 
-   public static void out(double[][] twoDimeArr){ // Вывод значений двумерного массива в формате 2-х знаков после запятой
+   static void out(double[][] twoDimeArr){ // Вывод значений двумерного массива в формате 2-х знаков после запятой
 
       for (int i = 0; i < 19; i++){
          for (int j = 0; j < 11; j++){
@@ -69,7 +69,7 @@ public class Test {
    }
 
 
-   public static void main(String[] args) {
+   static void main(String[] args) {
 
       int firstArr[] = arrayOne() ;
 
