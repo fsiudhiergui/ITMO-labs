@@ -1,0 +1,83 @@
+/**
+@author Студент Группы R3141 Коляда Всеволод
+*/
+
+import java.util.Arrays;
+import java.util.Random;
+
+public class Test {
+
+   public static int[] arrayOne(){
+      int[] createArr = new int[19]; // Объявление первого массива типа int
+      for (int i = 0; i < createArr.length; i++){      // Заполнение первого массива от 20 до 2
+         createArr[i] = 20 - i;
+      }
+      return createArr;
+   }
+
+   public static float[] arrayTwo(){
+      float[] createArr = new float[11]; // Объявление второго массива типа int
+      Random ran = new Random();
+      for (int i = 0; i < createArr.length; i++) { // Заполнение второго массива псевдо случаными числами от -4.0 до 13.0
+        createArr[i] = ran.nextFloat() * 17 - 4 ;
+      }
+      return createArr;
+   }
+
+   public static double[][] arrayThree(int[] firstArr, float[] secondArr){ // Заполнение двумерного массива
+      double[][] createDimeArr = new double[19][11]; 
+      String condition = "2 4 7 8 14 15 16 17 20";
+
+      for (int i = 0; i<19; i++){
+         for (int j = 0; j<11; j++){
+
+            if (firstArr[i] == 9) {
+               createDimeArr[i][j] = Math.pow ( Math.pow( Math.pow(Math.E, secondArr[j]) / 2 , 2) / 0.25, Math.pow(Math.E, secondArr[j] / (secondArr[j] - 1 )));
+               /*
+                  Данная формула создает очень большие числа в диапазоне от 1 до бесконечности (7, 33490302866540280000) для простоты понимания матрицы заменим их на TooMuch
+                   и очень малые числа, в диапозоне от минус бесконечности до 1 (-2, 0.000413466) в формате 2-х знаков после запятой - 0.00
+               */
+            }
+
+            else if (condition.contains(Integer.toString(firstArr[i]))){ 
+               createDimeArr[i][j] = Math.pow(Math.atan(Math.pow(Math.E, -Math.abs(secondArr[j]))) / 2, Math.cbrt(Math.pow(2 / (secondArr[j]-0.5), 2)));
+            }
+
+            else{ 
+               createDimeArr[i][j] = Math.atan(Math.sin(Math.pow(Math.cbrt(Math.log(Math.abs(secondArr[j]))) / 2 , Math.pow(0.5 / Math.pow(secondArr[j], secondArr[j] / 12), Math.pow(secondArr[j], 2)))));
+            }
+         }
+      }
+      return createDimeArr;
+   }
+
+   public static void out(double[][] twoDimeArr){ // Вывод значений двумерного массива в формате 2-х знаков после запятой
+
+      for (int i = 0; i < 19; i++){
+         for (int j = 0; j < 11; j++){
+            if ( twoDimeArr[i][j] > 1000000 ){
+               System.out.print("TooMuch "); // заменяет числа больше 1000000 на TooMuch для простоты понимания
+            
+            }
+            else {
+               String str = String.format("%1$-7.02f", twoDimeArr[i][j] );
+               System.out.print(str + " ") ;
+            }
+         }
+         System.out.println("");
+      }
+   }
+
+
+   public static void main(String[] args) {
+
+      int firstArr[] = arrayOne() ;
+
+      float secondArr[] = arrayTwo() ;
+
+      double twoDimeArr[][] = arrayThree(firstArr, secondArr);
+
+      out(twoDimeArr);
+
+   }
+}
